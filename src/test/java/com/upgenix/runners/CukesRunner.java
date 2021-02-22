@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt"},
         features = "src/test/resources/features",
         glue = "com/upgenix/step_definitions",
-        dryRun = false,
-        tags = "@Nodir"
+        dryRun = true,
+        tags = "@UP-167-KM"
 
 )
 

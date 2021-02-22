@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.upgenix.utilities.Driver;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class  BasePage {
@@ -40,6 +41,10 @@ public abstract class  BasePage {
     @FindBy(css = "div[class='loader-mask shown']")
     @CacheLookup
     protected WebElement loaderMask;
+
+    //DropDown Modules More button - Cemal added
+    @FindBy(css = "#menu_more_container")
+    public WebElement moreDropDownbtn;
 
     public BasePage() {
         PageFactory.initElements(Driver.get(), this);
@@ -119,6 +124,33 @@ public abstract class  BasePage {
 //            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
             BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)),  5);
         }
+    }
+
+    //Navigating each module - Kuvat added
+    public List<String> modules() {
+        waitUntilLoaderScreenDisappear();
+        List<WebElement> modules = Driver.get().findElements(By.xpath("//*[contains(@class,'-nav navbar-left')]/li"));
+        List<WebElement> moreModules = Driver.get().findElements(By.xpath("//*[contains(@id,'menu_more_container')]//ul/li"));
+        List<String> actualPageTitles = new ArrayList<>();
+
+        for (int i = 0; i < modules.size(); i++) {
+
+            WebElement module = modules.get(i);
+
+            actualPageTitles.add(module.getText());
+
+            if (module.getText().contains("More")) {
+                moreDropDownbtn.click();
+                BrowserUtils.waitFor(3);
+                for (WebElement moreModule : moreModules) {
+
+                    actualPageTitles.add(moreModule.getText());
+                }
+            }
+
+        }
+        actualPageTitles.remove("More");
+        return actualPageTitles;
     }
 
 }
