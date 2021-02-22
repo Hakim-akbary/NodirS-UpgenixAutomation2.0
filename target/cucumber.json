@@ -1,0 +1,346 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2021-02-22T21:16:46.270Z",
+        "before": [
+          {
+            "result": {
+              "duration": 1002500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.upgenix.step_definitions.Hooks.setUp()"
+            }
+          }
+        ],
+        "line": 12,
+        "name": "Login as a user",
+        "description": "",
+        "id": "a-user-should-be-able-to-login;login-as-a-user;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 635083400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.upgenix.step_definitions.Hooks.tearDown(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 4779711100,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "the user is on the login page",
+            "match": {
+              "location": "com.upgenix.step_definitions.LoginStepDefs_Nodir.the_user_is_on_the_login_page()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2135077900,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "the user enters \"imm10@info.com\" and \"inventorymanager\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"imm10@info.com\"",
+                  "offset": 16
+                },
+                {
+                  "val": "\"inventorymanager\"",
+                  "offset": 37
+                }
+              ],
+              "location": "com.upgenix.step_definitions.LoginStepDefs_Nodir.theUserEntersAnd(java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 12013000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "the user should be able to login",
+            "match": {
+              "location": "com.upgenix.step_definitions.LoginStepDefs_Nodir.the_user_should_be_able_to_login()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@WIP"
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-02-22T21:16:53.893Z",
+        "before": [
+          {
+            "result": {
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.upgenix.step_definitions.Hooks.setUp()"
+            }
+          }
+        ],
+        "line": 13,
+        "name": "Login as a user",
+        "description": "",
+        "id": "a-user-should-be-able-to-login;login-as-a-user;;3",
+        "after": [
+          {
+            "result": {
+              "duration": 621339800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.upgenix.step_definitions.Hooks.tearDown(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 4064394500,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "the user is on the login page",
+            "match": {
+              "location": "com.upgenix.step_definitions.LoginStepDefs_Nodir.the_user_is_on_the_login_page()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2418198100,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "the user enters \"salesmanager15@info.com\" and \"salesmanager\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"salesmanager15@info.com\"",
+                  "offset": 16
+                },
+                {
+                  "val": "\"salesmanager\"",
+                  "offset": 46
+                }
+              ],
+              "location": "com.upgenix.step_definitions.LoginStepDefs_Nodir.theUserEntersAnd(java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 8005800,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "the user should be able to login",
+            "match": {
+              "location": "com.upgenix.step_definitions.LoginStepDefs_Nodir.the_user_should_be_able_to_login()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@WIP"
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-02-22T21:17:01.010Z",
+        "before": [
+          {
+            "result": {
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.upgenix.step_definitions.Hooks.setUp()"
+            }
+          }
+        ],
+        "line": 14,
+        "name": "Login as a user",
+        "description": "",
+        "id": "a-user-should-be-able-to-login;login-as-a-user;;4",
+        "after": [
+          {
+            "result": {
+              "duration": 598820400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.upgenix.step_definitions.Hooks.tearDown(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 3931509600,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "the user is on the login page",
+            "match": {
+              "location": "com.upgenix.step_definitions.LoginStepDefs_Nodir.the_user_is_on_the_login_page()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2198837900,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "the user enters \"expensesmanager10@info.com\" and \"expensesmanager\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"expensesmanager10@info.com\"",
+                  "offset": 16
+                },
+                {
+                  "val": "\"expensesmanager\"",
+                  "offset": 49
+                }
+              ],
+              "location": "com.upgenix.step_definitions.LoginStepDefs_Nodir.theUserEntersAnd(java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 6005200,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "the user should be able to login",
+            "match": {
+              "location": "com.upgenix.step_definitions.LoginStepDefs_Nodir.the_user_should_be_able_to_login()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@WIP"
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-02-22T21:17:07.749Z",
+        "before": [
+          {
+            "result": {
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.upgenix.step_definitions.Hooks.setUp()"
+            }
+          }
+        ],
+        "line": 15,
+        "name": "Login as a user",
+        "description": "",
+        "id": "a-user-should-be-able-to-login;login-as-a-user;;5",
+        "after": [
+          {
+            "result": {
+              "duration": 611492900,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.upgenix.step_definitions.Hooks.tearDown(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 3698009500,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "the user is on the login page",
+            "match": {
+              "location": "com.upgenix.step_definitions.LoginStepDefs_Nodir.the_user_is_on_the_login_page()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2058730300,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "the user enters \"posmanager10@info.com\" and \"posmanager\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"posmanager10@info.com\"",
+                  "offset": 16
+                },
+                {
+                  "val": "\"posmanager\"",
+                  "offset": 44
+                }
+              ],
+              "location": "com.upgenix.step_definitions.LoginStepDefs_Nodir.theUserEntersAnd(java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 7006900,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "the user should be able to login",
+            "match": {
+              "location": "com.upgenix.step_definitions.LoginStepDefs_Nodir.the_user_should_be_able_to_login()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@WIP"
+          }
+        ]
+      }
+    ],
+    "name": "A user should be able to login",
+    "description": "",
+    "id": "a-user-should-be-able-to-login",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/login.feature",
+    "tags": []
+  }
+]
