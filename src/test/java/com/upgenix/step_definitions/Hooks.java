@@ -23,7 +23,7 @@ public class Hooks {
         }
 
         System.out.println("\tthis is coming from After");
-        //Driver.closeDriver();
+        Driver.closeDriver();
 
 
     }
