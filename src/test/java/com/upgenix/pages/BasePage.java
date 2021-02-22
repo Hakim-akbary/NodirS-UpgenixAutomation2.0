@@ -16,24 +16,30 @@ import java.util.List;
 
 public abstract class  BasePage {
 
-    @FindBy(css = "span.title-level-1")
+
+    //updated locators for UPGENIX
+    // Add new ones as per your need
+
+    @FindBy(xpath = "//*[@id=\"oe_main_menu_navbar\"]/div[2]/ul[1]/li/a/span")
     public List<WebElement> menuOptions;
+
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div[1]/ol/li")
+    public WebElement pageSubTitle;
+
+    @FindBy(xpath = "//*[@id=\"oe_main_menu_navbar\"]/div[2]/ul[2]/li/a/span")
+    public WebElement userName;
+
+    @FindBy(xpath = "//*[@id=\"oe_main_menu_navbar\"]/div[2]/ul[2]/li/ul/li[6]/a")
+    public WebElement logOutLink;
+
+    @FindBy(xpath = "//*[@id=\"oe_main_menu_navbar\"]/div[2]/ul[2]/li/ul/li[5]/a")
+    public WebElement myUser;
+
+
 
     @FindBy(css = "div[class='loader-mask shown']")
     @CacheLookup
     protected WebElement loaderMask;
-
-    @FindBy(css = "h1[class='oro-subtitle']")
-    public WebElement pageSubTitle;
-
-    @FindBy(css = "#user-menu > a")
-    public WebElement userName;
-
-    @FindBy(linkText = "Logout")
-    public WebElement logOutLink;
-
-    @FindBy(linkText = "My User")
-    public WebElement myUser;
 
     public BasePage() {
         PageFactory.initElements(Driver.get(), this);
