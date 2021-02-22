@@ -1,6 +1,6 @@
 Feature: A user should be able to login
 
-  @WIP
+  @Nodir
   Scenario Outline: Login as a user
 
     Given the user is on the login page

@@ -10,7 +10,7 @@ formatter.scenarioOutline({
   "keyword": "Scenario Outline",
   "tags": [
     {
-      "name": "@WIP"
+      "name": "@Nodir"
     }
   ]
 });
@@ -69,7 +69,7 @@ formatter.scenario({
   "keyword": "Scenario Outline",
   "tags": [
     {
-      "name": "@WIP"
+      "name": "@Nodir"
     }
   ]
 });
@@ -115,7 +115,7 @@ formatter.scenario({
   "keyword": "Scenario Outline",
   "tags": [
     {
-      "name": "@WIP"
+      "name": "@Nodir"
     }
   ]
 });
@@ -161,7 +161,7 @@ formatter.scenario({
   "keyword": "Scenario Outline",
   "tags": [
     {
-      "name": "@WIP"
+      "name": "@Nodir"
     }
   ]
 });
@@ -207,7 +207,7 @@ formatter.scenario({
   "keyword": "Scenario Outline",
   "tags": [
     {
-      "name": "@WIP"
+      "name": "@Nodir"
     }
   ]
 });
