@@ -37,6 +37,10 @@ public abstract class  BasePage {
     public WebElement myUser;
 
 
+    @FindBy(xpath = "//span[@class='oe_topbar_name']")
+    public WebElement getUserName;
+
+
 
     @FindBy(css = "div[class='loader-mask shown']")
     @CacheLookup
