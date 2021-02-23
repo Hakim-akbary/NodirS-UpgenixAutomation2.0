@@ -27,4 +27,9 @@ public class LoginPage {
         submit.click();
     }
 
+
+
+    @FindBy(xpath = "//p[@class='alert alert-danger']")
+    public WebElement alertMessage;
+
 }
