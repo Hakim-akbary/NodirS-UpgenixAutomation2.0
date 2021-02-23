@@ -157,4 +157,38 @@ public abstract class  BasePage {
         return actualPageTitles;
     }
 
+    /*  Added by Cemal
+         Users should be able to go all modules they have right to access
+         via links on the top menu  */
+
+    public List<String> verifyingAccessByNavigatingModules() {
+
+        BrowserUtils.waitForPageToLoad(6);
+
+        List<WebElement> modules = Driver.get().findElements(By.xpath("//*[contains(@class,'-nav navbar-left')]/li"));
+        List<WebElement> moreModules = Driver.get().findElements(By.xpath("//*[contains(@id,'menu_more_container')]//ul/li"));
+        List<String> actualPageTitles = new ArrayList<>();
+
+        for (int i = 1; i < modules.size(); i++) {
+
+            BrowserUtils.waitFor(1);
+            WebElement module = modules.get(i);
+
+            if (module.getText().contains("More")) {
+                for (WebElement moreModule : moreModules) {
+                    moreDropDownbtn.click();
+                    BrowserUtils.waitForVisibility(moreModule, 3);
+                    moreModule.click();
+                    BrowserUtils.waitFor(1);
+                    actualPageTitles.add(Driver.get().getTitle());
+                }
+            }
+            module.click();
+            BrowserUtils.waitFor(1);
+            actualPageTitles.add(Driver.get().getTitle());
+        }
+        return actualPageTitles;
+    }
+
+
 }
