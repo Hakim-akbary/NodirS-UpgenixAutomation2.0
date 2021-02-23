@@ -21,6 +21,10 @@ public abstract class  BasePage {
     //updated locators for UPGENIX
     // Add new ones as per your need
 
+    //Ozgur added
+    @FindBy(xpath = "//i[contains(@class,'fa fa-clock-o')]")
+    public WebElement activities;
+
     @FindBy(xpath = "//*[@id=\"oe_main_menu_navbar\"]/div[2]/ul[1]/li/a/span")
     public List<WebElement> menuOptions;
 
