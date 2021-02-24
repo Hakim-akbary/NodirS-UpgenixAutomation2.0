@@ -13,7 +13,6 @@ import org.junit.runner.RunWith;
         glue = "com/upgenix/step_definitions",
         dryRun = false,
         tags = "@yek"
-
 )
 
 public class CukesRunner {
