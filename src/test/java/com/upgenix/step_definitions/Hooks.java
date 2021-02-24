@@ -17,9 +17,7 @@ public class Hooks {
     public void setUp(){
 
         //Maximize and implicitly wait added - Cemal
-        Driver.get().manage().window().maximize();
-        Driver.get().manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-        System.out.println("\tthis is coming from BEFORE");
+        Driver.get().manage().window().maximize();System.out.println("\tthis is coming from BEFORE");
         Driver.get().manage().window().maximize();
         Driver.get().manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         Driver.get().get(ConfigurationReader.get("url"));

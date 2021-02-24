@@ -1,6 +1,6 @@
 package com.upgenix.step_definitions;
 
-import com.upgenix.pages.DashboardsPage;
+import com.upgenix.pages.DashboardPage;
 import com.upgenix.utilities.Driver;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
@@ -15,13 +15,13 @@ public class ModuleLinksFunctionalityStepDef_Cemal {
     @Then("verify the {string}")
     public void verify_the(String expectedUserAccountName) {
 
-        Assert.assertEquals(expectedUserAccountName, new DashboardsPage().getUserName());
+        Assert.assertEquals(expectedUserAccountName, new DashboardPage().getUserName());
     }
 
     @Then("the user clicks on the modules to verify following page titles respectively")
     public void the_user_clicks_on_the_modules_to_verify_following_page_titles_respectively(List<String> expectedPageTitles) {
 
-        Assert.assertEquals(expectedPageTitles, new DashboardsPage().verifyingAccessByNavigatingModules());
+        Assert.assertEquals(expectedPageTitles, new DashboardPage().verifyingAccessByNavigatingModules());
 
 
     }

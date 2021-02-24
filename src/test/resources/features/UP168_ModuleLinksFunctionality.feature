@@ -1,16 +1,13 @@
 @UP-168-WIP
 Feature: As a user I should be able to go all modules I have right to access via links on the top menu
 
-  Background:
-    Given the user is on the login page
-
   Scenario Outline:Users should be able to go all modules they have right to access via links on the top menu
     When the user enters "<email>" and "<password>"
     Then the user should be able to login
     Then verify the "<userAccountName>"
     And the user clicks on the modules to verify following page titles respectively
 
-      | #Inbox - Odoo               |
+      | #Inbox - Odoo                 |
       | Meetings - Odoo               |
       | Notes - Odoo                  |
       | Contacts - Odoo               |
