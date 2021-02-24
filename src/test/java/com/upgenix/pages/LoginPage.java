@@ -20,11 +20,15 @@ public class LoginPage {
     @FindBy(xpath = "//*[@type='submit']")
     public WebElement submit;
 
-
     public void login(String email, String password) {
         loginEmail.sendKeys(email);
         loginPassword.sendKeys(password);
         submit.click();
     }
+
+
+
+    @FindBy(xpath = "//p[@class='alert alert-danger']")
+    public WebElement alertMessage;
 
 }

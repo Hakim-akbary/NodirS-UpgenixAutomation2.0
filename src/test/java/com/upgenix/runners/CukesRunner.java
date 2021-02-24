@@ -12,8 +12,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/upgenix/step_definitions",
         dryRun = false,
-        tags = "@UP-168-WIP"
-
+        tags = "@yek"
 )
 
 public class CukesRunner {

@@ -3,7 +3,6 @@ Feature: A user should be able to login
   @Nodir
   Scenario Outline: Login as a user
 
-    Given the user is on the login page
     When the user enters "<email>" and "<password>"
     Then the user should be able to login
 

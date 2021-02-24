@@ -1,5 +1,6 @@
 package com.upgenix.step_definitions;
 
+import com.upgenix.utilities.ConfigurationReader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -19,6 +20,9 @@ public class Hooks {
         Driver.get().manage().window().maximize();
         Driver.get().manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
         System.out.println("\tthis is coming from BEFORE");
+        Driver.get().manage().window().maximize();
+        Driver.get().manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
+        Driver.get().get(ConfigurationReader.get("url"));
     }
 
     @After

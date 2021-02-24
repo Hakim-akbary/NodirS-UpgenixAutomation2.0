@@ -3,7 +3,6 @@ Feature: Automate Username Functionality
   @yek
   Scenario Outline: Automate Username Functionality <UsernameFunc>
 
-    Given the user is on the login page
     When the user enters "<email>" and "<password>"
     Then the user should be able to login
     Given I should be able to see "<UsernameFunc>" on the top menu
