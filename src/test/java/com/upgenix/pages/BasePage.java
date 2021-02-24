@@ -103,7 +103,7 @@ public abstract class  BasePage {
 
     //Navigating each module - Kuvat added
     public List<String> modules() {
-
+        waitUntilLoaderScreenDisappear();
         List<WebElement> modules = Driver.get().findElements(By.xpath("//*[contains(@class,'-nav navbar-left')]/li"));
         List<WebElement> moreModules = Driver.get().findElements(By.xpath("//*[contains(@id,'menu_more_container')]//ul/li"));
         List<String> actualPageTitles = new ArrayList<>();
@@ -139,17 +139,18 @@ public abstract class  BasePage {
         List<String> actualPageTitles = new ArrayList<>();
 
         for (int i = 1; i < modules.size(); i++) {
-            waitUntilLoaderScreenDisappear();
+
             WebElement module = modules.get(i);
 
             if (module.getText().contains("More")) {
                 for (WebElement moreModule : moreModules) {
                     moreDropDownbtn.click();
-                    BrowserUtils.waitFor(2);
+                    BrowserUtils.waitFor(1);
                     moreModule.click();
                     actualPageTitles.add(Driver.get().getTitle());
                 }
             }
+            waitUntilLoaderScreenDisappear();
             module.click();
             actualPageTitles.add(Driver.get().getTitle());
         }
