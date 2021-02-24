@@ -46,7 +46,7 @@ public abstract class  BasePage {
     @CacheLookup
     protected WebElement loaderMask;
 
-    //DropDown Modules More button - Cemal added
+    //DropDown Modules More button - Cemal
     @FindBy(css = "#menu_more_container")
     public WebElement moreDropDownbtn;
 
@@ -101,7 +101,7 @@ public abstract class  BasePage {
 
     }
 
-    //Navigating each module - Kuvat added
+    //Navigating each module - Kuvat
     public List<String> modules() {
 
         List<WebElement> modules = Driver.get().findElements(By.xpath("//*[contains(@class,'-nav navbar-left')]/li"));
@@ -109,22 +109,21 @@ public abstract class  BasePage {
         List<String> actualPageTitles = new ArrayList<>();
 
         for (int i = 0; i < modules.size(); i++) {
-
             WebElement module = modules.get(i);
+            if(! module.getText().equals("")){
+                actualPageTitles.add(module.getText());
+            }
 
-            actualPageTitles.add(module.getText());
-
-            if (module.getText().contains("More")) {
+            if (module.getText().equals("More")) {
                 moreDropDownbtn.click();
-                BrowserUtils.waitFor(2);
+                BrowserUtils.waitFor(3);
                 for (WebElement moreModule : moreModules) {
-
                     actualPageTitles.add(moreModule.getText());
                 }
             }
-
         }
         actualPageTitles.remove("More");
+        System.out.println("actualPageTitles = " + actualPageTitles);
         return actualPageTitles;
     }
 
