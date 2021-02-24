@@ -1,8 +1,11 @@
 package com.upgenix.step_definitions;
 
 import com.upgenix.pages.DashboardsPage;
+import com.upgenix.utilities.Driver;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
@@ -19,6 +22,7 @@ public class ModuleLinksFunctionalityStepDef_Cemal {
     public void the_user_clicks_on_the_modules_to_verify_following_page_titles_respectively(List<String> expectedPageTitles) {
 
         Assert.assertEquals(expectedPageTitles, new DashboardsPage().verifyingAccessByNavigatingModules());
+
 
     }
 }

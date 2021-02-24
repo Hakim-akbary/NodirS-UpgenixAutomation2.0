@@ -2,6 +2,7 @@ package com.upgenix.pages;
 
 
 import com.upgenix.utilities.BrowserUtils;
+import com.upgenix.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -10,12 +11,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import com.upgenix.utilities.Driver;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class  BasePage {
+public abstract class BasePage {
 
 
     //updated locators for UPGENIX
@@ -39,7 +39,6 @@ public abstract class  BasePage {
 
     @FindBy(xpath = "//span[@class='oe_topbar_name']")
     public WebElement getUserName;
-
 
 
     @FindBy(css = "div[class='loader-mask shown']")
@@ -81,20 +80,20 @@ public abstract class  BasePage {
 
     }
 
-    public String getUserName(){
+    public String getUserName() {
         waitUntilLoaderScreenDisappear();
         BrowserUtils.waitForVisibility(userName, 5);
         return userName.getText();
     }
 
 
-
-    public void logOut(){
+    public void logOut() {
         BrowserUtils.waitFor(2);
         BrowserUtils.clickWithJS(userName);
         BrowserUtils.clickWithJS(logOutLink);
     }
-    public void goToMyUser(){
+
+    public void goToMyUser() {
         waitUntilLoaderScreenDisappear();
         BrowserUtils.waitForClickablility(userName, 5).click();
         BrowserUtils.waitForClickablility(myUser, 5).click();
@@ -126,7 +125,7 @@ public abstract class  BasePage {
             Driver.get().findElement(By.xpath(moduleLocator)).click();
         } catch (Exception e) {
 //            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
-            BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)),  5);
+            BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)), 5);
         }
     }
 
@@ -151,7 +150,6 @@ public abstract class  BasePage {
                     actualPageTitles.add(moreModule.getText());
                 }
             }
-
         }
         actualPageTitles.remove("More");
         return actualPageTitles;
@@ -161,34 +159,28 @@ public abstract class  BasePage {
          Users should be able to go all modules they have right to access
          via links on the top menu  */
 
-    public List<String> verifyingAccessByNavigatingModules() {
-
-        BrowserUtils.waitForPageToLoad(6);
+   public List<String> verifyingAccessByNavigatingModules() {
 
         List<WebElement> modules = Driver.get().findElements(By.xpath("//*[contains(@class,'-nav navbar-left')]/li"));
         List<WebElement> moreModules = Driver.get().findElements(By.xpath("//*[contains(@id,'menu_more_container')]//ul/li"));
         List<String> actualPageTitles = new ArrayList<>();
 
         for (int i = 1; i < modules.size(); i++) {
-
-            BrowserUtils.waitFor(1);
+            waitUntilLoaderScreenDisappear();
             WebElement module = modules.get(i);
 
             if (module.getText().contains("More")) {
                 for (WebElement moreModule : moreModules) {
                     moreDropDownbtn.click();
-                    BrowserUtils.waitForVisibility(moreModule, 3);
+                    BrowserUtils.waitFor(2);
                     moreModule.click();
-                    BrowserUtils.waitFor(1);
                     actualPageTitles.add(Driver.get().getTitle());
                 }
             }
             module.click();
-            BrowserUtils.waitFor(1);
             actualPageTitles.add(Driver.get().getTitle());
         }
         return actualPageTitles;
     }
-
 
 }
