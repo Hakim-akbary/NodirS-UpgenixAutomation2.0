@@ -2,7 +2,6 @@ package com.upgenix.pages;
 
 
 import com.upgenix.utilities.BrowserUtils;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -18,9 +17,16 @@ import java.util.List;
 
 public abstract class  BasePage {
 
-    public BasePage() {
-        PageFactory.initElements(Driver.get(), this);
-    }
+
+    //updated locators for UPGENIX
+    // Add new ones as per your need
+
+    //Ozgur added
+    @FindBy(xpath = "//i[contains(@class,'fa fa-clock-o')]")
+    public WebElement activities;
+
+    @FindBy(xpath = "//*[@id=\"oe_main_menu_navbar\"]/div[2]/ul[1]/li/a/span")
+    public List<WebElement> menuOptions;
 
     @FindBy(xpath = "/html/body/div[1]/div[2]/div[1]/ol/li")
     public WebElement pageSubTitle;
@@ -34,16 +40,24 @@ public abstract class  BasePage {
     @FindBy(xpath = "//*[@id=\"oe_main_menu_navbar\"]/div[2]/ul[2]/li/ul/li[5]/a")
     public WebElement myUser;
 
+
     @FindBy(xpath = "//span[@class='oe_topbar_name']")
     public WebElement getUserName;
+
+
 
     @FindBy(css = "div[class='loader-mask shown']")
     @CacheLookup
     protected WebElement loaderMask;
 
-    //DropDown Modules More button - Cemal added
+    //DropDown Modules More button - Cemal
     @FindBy(css = "#menu_more_container")
     public WebElement moreDropDownbtn;
+
+    public BasePage() {
+        PageFactory.initElements(Driver.get(), this);
+    }
+
 
     /**
      * @return page name, for example: Dashboard
@@ -54,6 +68,7 @@ public abstract class  BasePage {
 //        BrowserUtils.waitForStaleElement(pageSubTitle);
         return pageSubTitle.getText();
     }
+
 
     /**
      * Waits until loader screen present. If loader screen will not pop up at all,
@@ -67,6 +82,7 @@ public abstract class  BasePage {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     public String getUserName(){
@@ -74,6 +90,8 @@ public abstract class  BasePage {
         BrowserUtils.waitForVisibility(userName, 5);
         return userName.getText();
     }
+
+
 
     public void logOut(){
         BrowserUtils.waitFor(2);
@@ -87,9 +105,9 @@ public abstract class  BasePage {
 
     }
 
-    //Navigating each module - Kuvat added
+    //Navigating each module - Kuvat
     public List<String> modules() {
-        waitUntilLoaderScreenDisappear();
+
         List<WebElement> modules = Driver.get().findElements(By.xpath("//*[contains(@class,'-nav navbar-left')]/li"));
         List<WebElement> moreModules = Driver.get().findElements(By.xpath("//*[contains(@id,'menu_more_container')]//ul/li"));
         List<String> actualPageTitles = new ArrayList<>();
