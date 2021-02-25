@@ -3,7 +3,6 @@ Feature: Activities Functionality
   @ozgur
   Scenario Outline: Activities Functionality Check <user>
 
-    Given the user is on the login page
     When the user enters "<email>" and "<password>"
     Then the user should be able to login
     And Users should be able to see Activities link on the top menu
