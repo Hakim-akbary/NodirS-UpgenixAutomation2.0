@@ -2,6 +2,7 @@ package com.upgenix.pages;
 
 
 import com.upgenix.utilities.BrowserUtils;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -157,6 +158,13 @@ public abstract class  BasePage {
             actualPageTitles.add(Driver.get().getTitle());
         }
         return actualPageTitles;
+    }
+
+    @FindBy(xpath = "//*[@title='Conversations']")
+    public WebElement conversations;
+
+    public void verifyConversationsIsDisplayed(){
+        Assert.assertTrue(conversations.isDisplayed());
     }
 
 }
