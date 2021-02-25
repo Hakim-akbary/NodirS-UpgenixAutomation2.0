@@ -1,6 +1,6 @@
 Feature: Activities Functionality
 
-  @ozgr
+  @ozgur
   Scenario Outline: Activities Functionality Check <user>
 
     When the user enters "<email>" and "<password>"
