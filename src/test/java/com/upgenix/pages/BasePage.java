@@ -50,7 +50,7 @@ public abstract class  BasePage {
     @CacheLookup
     protected WebElement loaderMask;
 
-    //DropDown Modules More button - Cemal added
+    //DropDown Modules More button - Cemal
     @FindBy(css = "#menu_more_container")
     public WebElement moreDropDownbtn;
 
@@ -105,59 +105,57 @@ public abstract class  BasePage {
 
     }
 
-    /**
-     * This method will navigate user to the specific module in vytrack application.
-     * For example: if tab is equals to Activities, and module equals to Calls,
-     * Then method will navigate user to this page: http://qa2.vytrack.com/call/
-     *
-     * @param tab
-     * @param module
-     */
-    public void navigateToModule(String tab, String module) {
-        String tabLocator = "//span[normalize-space()='" + tab + "' and contains(@class, 'title title-level-1')]";
-        String moduleLocator = "//span[normalize-space()='" + module + "' and contains(@class, 'title title-level-2')]";
-        try {
-            BrowserUtils.waitForClickablility(By.xpath(tabLocator), 5);
-            WebElement tabElement = Driver.get().findElement(By.xpath(tabLocator));
-            new Actions(Driver.get()).moveToElement(tabElement).pause(200).doubleClick(tabElement).build().perform();
-        } catch (Exception e) {
-            BrowserUtils.clickWithWait(By.xpath(tabLocator), 5);
-        }
-        try {
-            BrowserUtils.waitForPresenceOfElement(By.xpath(moduleLocator), 5);
-            BrowserUtils.waitForVisibility(By.xpath(moduleLocator), 5);
-            BrowserUtils.scrollToElement(Driver.get().findElement(By.xpath(moduleLocator)));
-            Driver.get().findElement(By.xpath(moduleLocator)).click();
-        } catch (Exception e) {
-//            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
-            BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)),  5);
-        }
-    }
-
-    //Navigating each module - Kuvat added
+    //Navigating each module - Kuvat
     public List<String> modules() {
-        waitUntilLoaderScreenDisappear();
+
         List<WebElement> modules = Driver.get().findElements(By.xpath("//*[contains(@class,'-nav navbar-left')]/li"));
         List<WebElement> moreModules = Driver.get().findElements(By.xpath("//*[contains(@id,'menu_more_container')]//ul/li"));
         List<String> actualPageTitles = new ArrayList<>();
 
         for (int i = 0; i < modules.size(); i++) {
-
             WebElement module = modules.get(i);
+            if(! module.getText().equals("")){
+                actualPageTitles.add(module.getText());
+            }
 
-            actualPageTitles.add(module.getText());
-
-            if (module.getText().contains("More")) {
+            if (module.getText().equals("More")) {
                 moreDropDownbtn.click();
                 BrowserUtils.waitFor(3);
                 for (WebElement moreModule : moreModules) {
-
                     actualPageTitles.add(moreModule.getText());
                 }
             }
-
         }
         actualPageTitles.remove("More");
+        System.out.println("actualPageTitles = " + actualPageTitles);
+        return actualPageTitles;
+    }
+
+    /*  Added by Cemal
+         Users should be able to go all modules they have right to access
+         via links on the top menu  */
+
+   public List<String> verifyingAccessByNavigatingModules() {
+
+        List<WebElement> modules = Driver.get().findElements(By.xpath("//*[contains(@class,'-nav navbar-left')]/li"));
+        List<WebElement> moreModules = Driver.get().findElements(By.xpath("//*[contains(@id,'menu_more_container')]//ul/li"));
+        List<String> actualPageTitles = new ArrayList<>();
+
+        for (int i = 1; i < modules.size(); i++) {
+            waitUntilLoaderScreenDisappear();
+            WebElement module = modules.get(i);
+
+            if (module.getText().contains("More")) {
+                for (WebElement moreModule : moreModules) {
+                    moreDropDownbtn.click();
+                    BrowserUtils.waitFor(2);
+                    moreModule.click();
+                    actualPageTitles.add(Driver.get().getTitle());
+                }
+            }
+            module.click();
+            actualPageTitles.add(Driver.get().getTitle());
+        }
         return actualPageTitles;
     }
 
