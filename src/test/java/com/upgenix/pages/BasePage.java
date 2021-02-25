@@ -2,6 +2,7 @@ package com.upgenix.pages;
 
 
 import com.upgenix.utilities.BrowserUtils;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -94,23 +95,57 @@ public abstract class  BasePage {
         List<String> actualPageTitles = new ArrayList<>();
 
         for (int i = 0; i < modules.size(); i++) {
-
             WebElement module = modules.get(i);
+            if(! module.getText().equals("")){
+                actualPageTitles.add(module.getText());
+            }
 
-            actualPageTitles.add(module.getText());
-
-            if (module.getText().contains("More")) {
+            if (module.getText().equals("More")) {
                 moreDropDownbtn.click();
                 BrowserUtils.waitFor(3);
                 for (WebElement moreModule : moreModules) {
-
                     actualPageTitles.add(moreModule.getText());
                 }
             }
-
         }
         actualPageTitles.remove("More");
+        System.out.println("actualPageTitles = " + actualPageTitles);
         return actualPageTitles;
+    }
+
+    /*  Added by Cemal
+         Users should be able to go all modules they have right to access
+         via links on the top menu  */
+
+   public List<String> verifyingAccessByNavigatingModules() {
+
+        List<WebElement> modules = Driver.get().findElements(By.xpath("//*[contains(@class,'-nav navbar-left')]/li"));
+        List<WebElement> moreModules = Driver.get().findElements(By.xpath("//*[contains(@id,'menu_more_container')]//ul/li"));
+        List<String> actualPageTitles = new ArrayList<>();
+
+        for (int i = 1; i < modules.size(); i++) {
+            waitUntilLoaderScreenDisappear();
+            WebElement module = modules.get(i);
+
+            if (module.getText().contains("More")) {
+                for (WebElement moreModule : moreModules) {
+                    moreDropDownbtn.click();
+                    BrowserUtils.waitFor(2);
+                    moreModule.click();
+                    actualPageTitles.add(Driver.get().getTitle());
+                }
+            }
+            module.click();
+            actualPageTitles.add(Driver.get().getTitle());
+        }
+        return actualPageTitles;
+    }
+
+    @FindBy(xpath = "//*[@title='Conversations']")
+    public WebElement conversations;
+
+    public void verifyConversationsIsDisplayed(){
+        Assert.assertTrue(conversations.isDisplayed());
     }
 
 }
